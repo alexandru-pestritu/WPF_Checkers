@@ -10,6 +10,13 @@ namespace Wpf_Checkers.Utils
     public class GameLogic
     {
         private GameInfo gameInfo;
+        private Stats stats;
+
+        public GameLogic(GameInfo gameInfo, Stats stats)
+        {
+            this.gameInfo = gameInfo;
+            this.stats = stats;
+        }
 
         private int HighlightMove(Cell cell, int possibleMoves = 0, bool multiple = false)
         {
@@ -124,11 +131,15 @@ namespace Wpf_Checkers.Utils
             }
             if (redPieces == 0)
             {
+                stats.WinsBlack++;
+                stats.BlackWinsString = stats.WinsBlack.ToString();
                 gameInfo.BlackWins = true;
                 gameInfo.GameFinished = true;
             }
             else if (whitePieces == 0)
             {
+                stats.WinsRed++;
+                stats.RedWinsString = stats.WinsRed.ToString();
                 gameInfo.RedWins = true;
                 gameInfo.GameFinished = true;
             }
