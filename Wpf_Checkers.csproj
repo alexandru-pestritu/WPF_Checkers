@@ -62,6 +62,7 @@
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\GameInfo.cs" />
     <Compile Include="Models\Piece.cs" />
+    <Compile Include="Utils\GameHelper.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -95,7 +96,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utils\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
