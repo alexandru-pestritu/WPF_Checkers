@@ -101,5 +101,37 @@ namespace Wpf_Checkers.Utils
             }
             return possibleMoves;
         }
+
+        private void ResetHighlight()
+        {
+            for (int row = 0; row < 8; ++row)
+                for (int col = 0; col < 8; ++col)
+                    gameInfo.Board[row][col].Highlight = false;
+        }
+
+        private void CheckWin()
+        {
+            int redPieces = 0, whitePieces = 0;
+            for (int row = 0; row < 8; ++row)
+            {
+                for (int col = 0; col < 8; ++col)
+                {
+                    if (gameInfo.Board[row][col].Piece == Piece.RedPiece || gameInfo.Board[row][col].Piece == Piece.RedKingPiece)
+                        ++redPieces;
+                    if (gameInfo.Board[row][col].Piece == Piece.BlackPiece || gameInfo.Board[row][col].Piece == Piece.BlackKingPiece)
+                        ++whitePieces;
+                }
+            }
+            if (redPieces == 0)
+            {
+                gameInfo.BlackWins = true;
+                gameInfo.GameFinished = true;
+            }
+            else if (whitePieces == 0)
+            {
+                gameInfo.RedWins = true;
+                gameInfo.GameFinished = true;
+            }
+        }
     }
 }

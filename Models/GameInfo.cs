@@ -15,7 +15,7 @@ namespace Wpf_Checkers.Models
         private ObservableCollection<ObservableCollection<Cell>> board;
         private bool multipleAllowed;
         private bool playerTurn;
-        private bool whiteWins;
+        private bool blackWins;
         private bool redWins;
         private bool gameFinished;
         private bool startPhase;
@@ -30,7 +30,7 @@ namespace Wpf_Checkers.Models
             Board = board;
             MultipleAllowed = multipleAllowed;
             PlayerTurn = playerTurn;
-            WhiteWins = whiteWins;
+            BlackWins = whiteWins;
             RedWins = redWins;
             GameFinished = gameFinished;
             StartPhase = startPhase;
@@ -66,12 +66,12 @@ namespace Wpf_Checkers.Models
             }
         }
 
-        public bool WhiteWins
+        public bool BlackWins
         {
-            get { return whiteWins; }
+            get { return blackWins; }
             set
             {
-                whiteWins = value;
+                blackWins = value;
                 OnPropertyChanged();
             }
         }
