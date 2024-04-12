@@ -62,6 +62,7 @@
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\GameInfo.cs" />
     <Compile Include="Models\Piece.cs" />
+    <Compile Include="Models\Stats.cs" />
     <Compile Include="Utils\GameHelper.cs" />
     <Compile Include="Utils\GameLogic.cs" />
     <Compile Include="ViewModels\CellViewModel.cs" />
@@ -97,7 +98,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\stats.txt" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
