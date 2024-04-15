@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Checkers.Views"
         mc:Ignorable="d"
-        Title="About" Height="450" Width="800">
-    <Grid>
-        
+            Title="About" Height="500" Width="800">
+    <Grid Background="#FF120C0A">
+        <StackPanel Width="600" Height="370">
+            <Label Foreground="#FFFFC4D1" Content="Creator:" FontSize="30" FontFamily="Courier New" Margin="0, 10, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Label Foreground="NavajoWhite" Content="Pestritu Alexandru" FontSize="22" FontFamily="Courier New" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Label Foreground="NavajoWhite" Content="alexandru.pestritu@student.unitbv.ro" FontSize="22" FontFamily="Courier New" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Label Foreground="NavajoWhite" Content="10LF223" FontSize="22" FontFamily="Courier New" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Label Foreground="#FFFFC4D1" Content="Despre:" FontSize="30" FontFamily="Courier New" Margin="0, 10, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <TextBlock Foreground="NavajoWhite" Text="Dame este un joc pentru două persoane bazat pe strategie. Piesele de pe tabla de șah se pot deplasa pe diagonale cu scopul de a captura toate piese adversarului" TextWrapping="Wrap" TextAlignment="Center" FontSize="22" FontFamily="Courier New" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Window>
