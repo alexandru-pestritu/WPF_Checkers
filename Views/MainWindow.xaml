@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:convertors="clr-namespace:Wpf_Checkers.Utils"
         mc:Ignorable="d"
-        Title="Checkers" Height="1000" Width="1600">
+        Title="Checkers" Height="1080" Width="1920">
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <convertors:BoolToVisibilityConverter x:Key="BoolToVis"/>
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#353535"/>
             <Setter Property="Foreground" Value="#f2f2f2"/>
@@ -115,7 +116,7 @@
         <Image Width="120" Height="120" Source="../Resources/Images/BlackPiece.png" Stretch="UniformToFill"  Margin="0, 0, 100 , 140" Visibility="{Binding GameInfo.WhiteWins, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
         <Image Width="120" Height="120" Source="../Resources/Images/RedPiece.png" Stretch="UniformToFill"  Margin="0, 0, 100 , 140" Visibility="{Binding GameInfo.RedWins, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
 
-        <ItemsControl Name="grid"  ItemsSource="{Binding GameBoard}" VerticalAlignment="Center" Width="720" Height="720">
+        <ItemsControl Name="grid"  ItemsSource="{Binding GameBoard}" VerticalAlignment="Center" Width="600" Height="600">
             <ItemsControl.Background>
                 <ImageBrush ImageSource="../Resources/Images/Board.png"/>
             </ItemsControl.Background>
@@ -130,7 +131,7 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="#000000">
-                                    <Button Style="{StaticResource ButtonNoHighlight}" Background="Transparent" Width="90" Height="90" Command="{Binding ClickCommand}" CommandParameter="{Binding SimpleCell}">
+                                    <Button Style="{StaticResource ButtonNoHighlight}" Background="Transparent" Width="75" Height="75" Command="{Binding ClickCommand}" CommandParameter="{Binding SimpleCell}">
                                         <Grid>
                                             <Image Source="{Binding SimpleCell.Piece}" Stretch="UniformToFill" />
                                             <Image Source="../Resources/Images/AvailableCell.png" Stretch="UniformToFill" Visibility="{Binding SimpleCell.Highlight, Converter={StaticResource BoolToVis}}"/>

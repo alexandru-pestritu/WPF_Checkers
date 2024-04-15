@@ -68,6 +68,7 @@
     <Compile Include="Models\GameInfo.cs" />
     <Compile Include="Models\Piece.cs" />
     <Compile Include="Models\Stats.cs" />
+    <Compile Include="Utils\BoolToVisibilityConverter.cs" />
     <Compile Include="Utils\GameHelper.cs" />
     <Compile Include="Utils\GameLogic.cs" />
     <Compile Include="ViewModels\CellViewModel.cs" />
