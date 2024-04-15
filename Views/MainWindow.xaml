@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:convertors="clr-namespace:Wpf_Checkers.Utils"
         mc:Ignorable="d"
-        Title="Checkers" Height="1080" Width="1920">
+        Title="Checkers Game" Height="1080" Width="1920"
+        Icon="../Resources/Images/BlackPiece.png">
     <Window.Resources>
         <convertors:BoolToVisibilityConverter x:Key="BoolToVis"/>
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
