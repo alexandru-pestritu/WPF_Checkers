@@ -49,101 +49,91 @@
         </Style>
 
     </Window.Resources>
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="../Resources/Images/background.jpg"/>
-        </Grid.Background>
-        <StackPanel>
-            <CheckBox FontFamily="Courier New" IsEnabled="{Binding GameInfo.StartPhase}" IsChecked="{Binding GameInfo.MultipleAllowed}" Margin="25, 250, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <CheckBox.LayoutTransform>
-                    <ScaleTransform ScaleX="3" ScaleY="3.1" />
-                </CheckBox.LayoutTransform>
-                <CheckBox.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="7"/>
-                    </Style>
-                </CheckBox.Resources>
-            </CheckBox>
-            <Button Style="{StaticResource ButtonStyle}" Content="New Game" Width="220" Height="80" Command="{Binding NewGameCommand}" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="35" FontFamily="Courier New" Margin="60, 30, 0, 0">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="30"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button Style="{StaticResource ButtonStyle}" Content="Save Game" Width="220" Height="80" Command="{Binding SaveGameCommand}" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="35" FontFamily="Courier New" Margin="60, 30, 0, 0">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="30"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button Style="{StaticResource ButtonStyle}" Content="Load Game" Width="220" Height="80" Command="{Binding LoadGameCommand}" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="35" FontFamily="Courier New" Margin="60, 30, 0, 0">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="30"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </StackPanel>
-        <Button Style="{StaticResource ButtonStyle}" Content="About" Width="130" Height="50" Command="{Binding AboutCommand}" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="28" FontFamily="Courier New" Margin="60, 35, 0, 0">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="22"/>
-                </Style>
-            </Button.Resources>
-        </Button>
 
-        <Button Style="{StaticResource ButtonStyle}" Content="{Binding Stats.ButtonStats}" Width="250" Height="60" Command="{Binding ShowStatsCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="35" FontFamily="Courier New" Margin="0, 245, 0, 30">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Game">
+                <MenuItem Header="New Game" Command="{Binding NewGameCommand}"/>
+                <MenuItem Header="Save Game" Command="{Binding SaveGameCommand}"/>
+                <MenuItem Header="Load Game" Command="{Binding LoadGameCommand}"/>
+                <MenuItem Header="Multiple Allowed">
+                    <MenuItem.Template>
+                        <ControlTemplate TargetType="MenuItem">
+                            <CheckBox IsChecked="{Binding GameInfo.MultipleAllowed}" 
+                              IsEnabled="{Binding GameInfo.StartPhase}"
+                              Content="Multiple Allowed"
+                              Margin="35 0 0 0"/>
+                        </ControlTemplate>
+                    </MenuItem.Template>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Statistics" Command="{Binding ShowStatsCommand}"/>
+            <MenuItem Header="About" Command="{Binding AboutCommand}"/>
+        </Menu>
+        
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="../Resources/Images/background.jpg"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
 
-        <Image Width="60" Height="60" Source="../Resources/Images/BlackPiece.png" Stretch="UniformToFill" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}" Margin="60, 0, 0, 35" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-        <Image Width="60" Height="60" Source="../Resources/Images/RedPiece.png" Stretch="UniformToFill" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}" Margin="0, 0, 60, 35" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Label Foreground="NavajoWhite" Content="{Binding Stats.WhiteWinsString}" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}" FontSize="40" FontFamily="Courier New" Margin="130, 0, 0 ,34" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-        <Label Foreground="NavajoWhite" Content="{Binding Stats.RedWinsString}" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}" FontSize="40" FontFamily="Courier New" Margin="0, 0, 130 ,34" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                <Label Foreground="White" Content="Current Player:" FontSize="40" FontFamily="Poppins"/>
+                <Image x:Name="MoveWhite" Width="100" Height="100" Source="../Resources/Images/BlackPiece.png" Stretch="UniformToFill" HorizontalAlignment="Center"/>
+                <Image Margin="0 -100 0 0" x:Name="MoveRed" Width="100" Height="100" Source="../Resources/Images/RedPiece.png" Stretch="UniformToFill" Visibility="{Binding GameInfo.PlayerTurn, Converter={StaticResource BoolToVis}}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            </StackPanel>
 
-        <Label Foreground="NavajoWhite" Content="Multi-Jump" FontSize="30" FontFamily="Courier New" Margin="80, 253, 70 ,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Foreground="NavajoWhite" Content="Player to move:" FontSize="40" FontFamily="Courier New" Margin="0, 30, 60 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Image x:Name="MoveWhite" Width="50" Height="50" Source="../Resources/Images/BlackPiece.png" Stretch="UniformToFill"  Margin="365, 35, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Image x:Name="MoveRed" Width="50" Height="50" Source="../Resources/Images/RedPiece.png" Stretch="UniformToFill" Visibility="{Binding GameInfo.PlayerTurn, Converter={StaticResource BoolToVis}}" Margin="365, 35, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Foreground="White" Content="Statistics:" FontSize="45" FontFamily="Poppins" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Width="80" Height="80" Source="../Resources/Images/BlackPiece.png" Stretch="UniformToFill" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Label Foreground="White" Content="{Binding Stats.BlackWinsString}" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}" FontSize="50" FontFamily="Poppins" Margin="10 0 0 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 25 0 0" HorizontalAlignment="Center">
+                    <Image Width="80" Height="80" Source="../Resources/Images/RedPiece.png" Stretch="UniformToFill" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                    <Label Foreground="White" Content="{Binding Stats.RedWinsString}" Visibility="{Binding Stats.ShowStats, Converter={StaticResource BoolToVis}}" FontSize="50" FontFamily="Poppins" Margin="10 0 0 0"/>
+                </StackPanel>
+            </StackPanel>
 
-        <Label Foreground="#FF93FFB3" Content="Wins" FontSize="60" FontFamily="Courier New" Margin="0, 200, 83 , 140" Visibility="{Binding GameInfo.GameFinished, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <Image Width="120" Height="120" Source="../Resources/Images/BlackPiece.png" Stretch="UniformToFill"  Margin="0, 0, 100 , 140" Visibility="{Binding GameInfo.WhiteWins, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <Image Width="120" Height="120" Source="../Resources/Images/RedPiece.png" Stretch="UniformToFill"  Margin="0, 0, 100 , 140" Visibility="{Binding GameInfo.RedWins, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Foreground="White" Content="Winner:" FontSize="50" FontFamily="Poppins" Visibility="{Binding GameInfo.GameFinished, Converter={StaticResource BoolToVis}}"/>
+                <Image Width="100" Height="100" Source="../Resources/Images/BlackPiece.png" Stretch="UniformToFill" Visibility="{Binding GameInfo.BlackWins, Converter={StaticResource BoolToVis}}"/>
+                <Image Margin="0 -100 0 0" Width="100" Height="100" Source="../Resources/Images/RedPiece.png" Stretch="UniformToFill" Visibility="{Binding GameInfo.RedWins, Converter={StaticResource BoolToVis}}"/>
+            </StackPanel>
+            
+            <ItemsControl Grid.Column="1" Name="grid"  ItemsSource="{Binding GameBoard}" VerticalAlignment="Center" Width="600" Height="600">
+                <ItemsControl.Background>
+                    <ImageBrush ImageSource="../Resources/Images/Board.png"/>
+                </ItemsControl.Background>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ItemsControl ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="#000000">
+                                        <Button Style="{StaticResource ButtonNoHighlight}" Background="Transparent" Width="75" Height="75" Command="{Binding ClickCommand}" CommandParameter="{Binding SimpleCell}">
+                                            <Grid>
+                                                <Image Source="{Binding SimpleCell.Piece}" Stretch="UniformToFill" />
+                                                <Image Source="../Resources/Images/AvailableCell.png" Stretch="UniformToFill" Visibility="{Binding SimpleCell.Highlight, Converter={StaticResource BoolToVis}}"/>
+                                            </Grid>
+                                        </Button>
 
-        <ItemsControl Name="grid"  ItemsSource="{Binding GameBoard}" VerticalAlignment="Center" Width="600" Height="600">
-            <ItemsControl.Background>
-                <ImageBrush ImageSource="../Resources/Images/Board.png"/>
-            </ItemsControl.Background>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <ItemsControl ItemsSource="{Binding}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="#000000">
-                                    <Button Style="{StaticResource ButtonNoHighlight}" Background="Transparent" Width="75" Height="75" Command="{Binding ClickCommand}" CommandParameter="{Binding SimpleCell}">
-                                        <Grid>
-                                            <Image Source="{Binding SimpleCell.Piece}" Stretch="UniformToFill" />
-                                            <Image Source="../Resources/Images/AvailableCell.png" Stretch="UniformToFill" Visibility="{Binding SimpleCell.Highlight, Converter={StaticResource BoolToVis}}"/>
-                                        </Grid>
-                                    </Button>
-
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </DockPanel>
 </Window>
