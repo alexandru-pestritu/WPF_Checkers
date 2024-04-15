@@ -44,6 +44,7 @@ namespace Wpf_Checkers.Utils
                             ++possibleMoves;
                         }
                 }
+
                 if (cell.X != 7 && cell.Y != 0)
                 {
                     if (gameInfo.Board[cell.X + 1][cell.Y - 1].Piece == null && !multiple)
@@ -64,6 +65,7 @@ namespace Wpf_Checkers.Utils
                         }
                 }
             }
+
             if (cell.Piece == Piece.RedPiece || cell.Piece == Piece.BlackKingPiece || cell.Piece == Piece.RedKingPiece)
             {
                 if (cell.X != 0 && cell.Y != 7)
@@ -85,6 +87,7 @@ namespace Wpf_Checkers.Utils
                             ++possibleMoves;
                         }
                 }
+
                 if (cell.X != 0 && cell.Y != 0)
                 {
                     if (gameInfo.Board[cell.X - 1][cell.Y - 1].Piece == null && !multiple)

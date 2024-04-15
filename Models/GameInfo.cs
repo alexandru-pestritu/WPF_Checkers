@@ -25,12 +25,12 @@ namespace Wpf_Checkers.Models
 
         }
 
-        public GameInfo(ObservableCollection<ObservableCollection<Cell>> board, bool multipleAllowed, bool playerTurn, bool whiteWins, bool redWins, bool gameFinished, bool startPhase)
+        public GameInfo(ObservableCollection<ObservableCollection<Cell>> board, bool multipleAllowed, bool playerTurn, bool blackWins, bool redWins, bool gameFinished, bool startPhase)
         {
             Board = board;
             MultipleAllowed = multipleAllowed;
             PlayerTurn = playerTurn;
-            BlackWins = whiteWins;
+            BlackWins = blackWins;
             RedWins = redWins;
             GameFinished = gameFinished;
             StartPhase = startPhase;
