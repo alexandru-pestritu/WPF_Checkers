@@ -5,15 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Checkers.Views"
         mc:Ignorable="d"
-            Title="About" Height="500" Width="800">
-    <Grid Background="#FF120C0A">
-        <StackPanel Width="600" Height="370">
-            <Label Foreground="#FFFFC4D1" Content="Creator:" FontSize="30" FontFamily="Courier New" Margin="0, 10, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Label Foreground="NavajoWhite" Content="Pestritu Alexandru" FontSize="22" FontFamily="Courier New" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Label Foreground="NavajoWhite" Content="alexandru.pestritu@student.unitbv.ro" FontSize="22" FontFamily="Courier New" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Label Foreground="NavajoWhite" Content="10LF223" FontSize="22" FontFamily="Courier New" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Label Foreground="#FFFFC4D1" Content="Despre:" FontSize="30" FontFamily="Courier New" Margin="0, 10, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <TextBlock Foreground="NavajoWhite" Text="Dame este un joc pentru două persoane bazat pe strategie. Piesele de pe tabla de șah se pot deplasa pe diagonale cu scopul de a captura toate piese adversarului" TextWrapping="Wrap" TextAlignment="Center" FontSize="22" FontFamily="Courier New" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        Title="About" Height="700" Width="1000">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Resources/Images/background.jpg"/>
+        </Grid.Background>
+        <StackPanel Width="800">
+            <Label Foreground="White" Content="Student" FontSize="30" FontFamily="Poppins" Margin="0, 10, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Foreground="DarkGray" Content="Pestritu Alexandru" FontSize="22" FontFamily="Poppins" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Foreground="DarkGray" Content="alexandru.pestritu@student.unitbv.ro" FontSize="22" FontFamily="Poppins" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Foreground="DarkGray" Content="Grupa 10LF223" FontSize="22" FontFamily="Poppins" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Foreground="White" Content="Despre Joc" FontSize="30" FontFamily="Poppins" Margin="0, 10, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock Foreground="DarkGray" Text="Dame este un joc pentru două persoane bazat pe strategia jucătorilor. Jocul este de regulă alcătuit dintr-o tablă de șah cu 8 x 8 pătrate colorate alternativ deschis și întunecat. Figurile de joc sunt 24 de discuri rotunde confecționate din lemn, pentru unul culoare albă și de culoare neagră pentru celălalt jucător. Câmpul de joc îl constituie numai pătrățelele de culoare închisă, piesele de joc deplasându-se numai diagonal înainte, câte un pătrat, caz de excepție când poate sări peste piesa adversarului pe care o câștigă. Condiția de a putea sări piesa adversarului este ca în spatele piesei sărite să existe un câmp (pătrat) gol. Țelul jocului este de a ajunge pe ultimul rând de pătrățele din partea adversarului când piesele de joc suprapuse două câte două vor fi numite „dame”. Aceste piese duble de joc pot sări diagonal de-a lungul tablei. A câștigat jocul acea persoană care a câștigat toate piesele adversarului sau l-a blocat." TextWrapping="Wrap" TextAlignment="Justify" FontSize="20" FontFamily="Poppins" Margin="0, 0, 0 ,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </Window>
