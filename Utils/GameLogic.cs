@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Wpf_Checkers.Models;
@@ -143,6 +144,23 @@ namespace Wpf_Checkers.Utils
                 gameInfo.RedWins = true;
                 gameInfo.GameFinished = true;
             }
+        }
+
+        private void MoveCaptureSimple(Cell currentCell)
+        {
+            currentCell.Piece = GameHelper.PreviousCell.Piece;
+            GameHelper.PreviousCell.Piece = null;
+            if (Math.Abs(GameHelper.PreviousCell.X - currentCell.X) != 1)
+                if (gameInfo.Board[(GameHelper.PreviousCell.X + currentCell.X) / 2][(GameHelper.PreviousCell.Y + currentCell.Y) / 2].Piece != null)
+                    gameInfo.Board[(GameHelper.PreviousCell.X + currentCell.X) / 2][(GameHelper.PreviousCell.Y + currentCell.Y) / 2].Piece = null;
+            if (currentCell.Piece == Piece.RedPiece && currentCell.X == 0)
+                currentCell.Piece = Piece.RedKingPiece;
+            if (currentCell.Piece == Piece.BlackPiece && currentCell.X == 7)
+                currentCell.Piece = Piece.BlackKingPiece;
+            if (gameInfo.StartPhase)
+                gameInfo.StartPhase = false;
+            CheckWin();
+            ResetHighlight();
         }
     }
 }
