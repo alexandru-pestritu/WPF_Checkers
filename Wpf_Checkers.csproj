@@ -115,5 +115,9 @@
     <Resource Include="Resources\Images\KingRedPiece.png" />
     <Resource Include="Resources\Images\RedPiece.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\background.jpg" />
+    <Resource Include="Resources\Images\Board.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

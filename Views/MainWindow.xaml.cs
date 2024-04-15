@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf_Checkers.ViewModels;
 
 namespace Wpf_Checkers.Views
 {
@@ -22,6 +23,8 @@ namespace Wpf_Checkers.Views
         public MainWindow()
         {
             InitializeComponent();
+            GameViewModel viewModel = new GameViewModel();
+            this.DataContext = viewModel;
         }
     }
 }
