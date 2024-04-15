@@ -59,6 +59,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\AboutCommand.cs" />
+    <Compile Include="Commands\LoadGameCommand.cs" />
+    <Compile Include="Commands\NewGameCommand.cs" />
+    <Compile Include="Commands\SaveGameCommand.cs" />
+    <Compile Include="Commands\ShowStatsCommand.cs" />
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\GameInfo.cs" />
     <Compile Include="Models\Piece.cs" />
@@ -67,6 +72,9 @@
     <Compile Include="Utils\GameLogic.cs" />
     <Compile Include="ViewModels\CellViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -103,6 +111,10 @@
     <Resource Include="Resources\stats.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
