@@ -7,30 +7,50 @@ using System.Windows.Input;
 
 namespace Wpf_Checkers.MVVM
 {
-    public class RelayCommand : ICommand
+    class RelayCommand<T> : ICommand
     {
-        private Action<object> execute;
-        private Func<object, bool> canExecute;
-        public event EventHandler CanExecuteChanged
+        private Action<T> commandTask;
+        private Predicate<T> canExecuteTask;
+
+        public RelayCommand(Action<T> workToDo, Predicate<T> canExecute)
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            commandTask = workToDo;
+            canExecuteTask = canExecute;
         }
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+
+        public RelayCommand(Action<T> workToDo)
+            : this(workToDo, DefaultCanExecute)
         {
-            this.execute = execute;
-            this.canExecute = canExecute;
+            commandTask = workToDo;
+        }
+
+        private static bool DefaultCanExecute(T parameter)
+        {
+            return true;
         }
 
         public bool CanExecute(object parameter)
         {
-            return canExecute == null || canExecute(parameter);
+            return canExecuteTask != null && canExecuteTask((T)parameter);
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add
+            {
+                CommandManager.RequerySuggested += value;
+            }
+
+            remove
+            {
+                CommandManager.RequerySuggested -= value;
+            }
         }
 
         public void Execute(object parameter)
         {
-            execute(parameter);
+            commandTask((T)parameter);
         }
     }
 }
