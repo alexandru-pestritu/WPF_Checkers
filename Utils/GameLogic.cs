@@ -162,5 +162,49 @@ namespace Wpf_Checkers.Utils
             CheckWin();
             ResetHighlight();
         }
+
+        public void cellClicked(Cell currentCell, bool multiple = false)
+        {
+            if (currentCell.Piece != null && ((currentCell.Piece == Piece.BlackPiece && gameInfo.PlayerTurn == false) || (currentCell.Piece == Piece.BlackKingPiece && gameInfo.PlayerTurn == false))
+                || ((currentCell.Piece == Piece.RedPiece && gameInfo.PlayerTurn == true) || (currentCell.Piece == Piece.RedKingPiece && gameInfo.PlayerTurn == true)))
+            {
+                ResetHighlight();
+                HighlightMove(currentCell);
+                GameHelper.PreviousCell = currentCell;
+            }
+            else if (currentCell.Highlight && GameHelper.PreviousCell.Piece != null)
+            {
+                MoveCaptureSimple(currentCell);
+                if (gameInfo.MultipleAllowed)
+                {
+                    if (Math.Abs(GameHelper.PreviousCell.X - currentCell.X) != 1)
+                    {
+                        if (HighlightMove(currentCell, 0, true) != 0)
+                        {
+                            GameHelper.PreviouslyJumped = true;
+                            GameHelper.PreviousCell = currentCell;
+                        }
+                        else
+                        {
+                            gameInfo.PlayerTurn = !gameInfo.PlayerTurn;
+                            GameHelper.PreviouslyJumped = false;
+                        }
+                    }
+                    else
+                        gameInfo.PlayerTurn = !gameInfo.PlayerTurn;
+                }
+                else
+                    gameInfo.PlayerTurn = !gameInfo.PlayerTurn;
+            }
+        }
+
+        public void ClickAction(Cell obj)
+        {
+            if (!GameHelper.PreviouslyJumped)
+                cellClicked(obj);
+            else if (GameHelper.PreviouslyJumped && obj.Highlight)
+                cellClicked(obj);
+        }
     }
 }
+
