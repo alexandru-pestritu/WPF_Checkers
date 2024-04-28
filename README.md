@@ -1,6 +1,9 @@
 # Checkers Game
 Welcome to the Checkers Game repository! This is a WPF (Windows Presentation Foundation) application developed in C# that brings the classic game of checkers to life with a graphical user interface. The application follows the MVVM (Model-View-ViewModel) architectural pattern for clean and organized code.
 
+![WPF_Checkers](https://github.com/alexandru-pestritu/WPF_Checkers/assets/147277107/07cde9a3-4726-4bd3-9c02-4dbdd3fee120)
+
+
 ## Overview
 The Checkers Game features the following functionalities:
 
